@@ -51,14 +51,14 @@ GPDS users 300-881 were used (```--users 300 881```).
 Training SigNet:
 
 ```
-python -m sigver.featurelearning.train --dataset-path  <data.npz> --users [first last]\ 
+python -m sigver.featurelearning.train --model signet --dataset-path  <data.npz> --users [first last]\ 
 --model signet --epochs 60 --logdir signet  
 ```
 
 Training SigNet-F with lambda=0.95:
 
 ```
-python -m sigver.featurelearning.train --dataset-path  <data.npz> --users [first last]\ 
+python -m sigver.featurelearning.train --model signet --dataset-path  <data.npz> --users [first last]\ 
 --model signet --epochs 60 --forg --lamb 0.95 --logdir signet_f_lamb0.95  
 ```
 
