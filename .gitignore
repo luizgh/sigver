@@ -1,0 +1,4 @@
+.idea
+*.pyc
+sigver.egg-info
+.ipynb_checkpoints/
