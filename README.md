@@ -150,6 +150,6 @@ If you use our code, please consider citing the following papers:
 
 # License
 
-The source code is released under the BSD 3-clause license. Note that the trained models used the GPDS dataset for training (which is restricted for non-comercial use).  
+The source code is released under the BSD 3-clause license. Note that the trained models used the GPDS dataset for training, which is restricted for non-commercial use.  
 
 Please do not contact me requesting access to any particular dataset. These requests should be addressed directly to the groups that collected them.
