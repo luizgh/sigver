@@ -2,7 +2,7 @@
 
 This repository contains code to train CNNs for feature extraction for Offline Handwritten Signatures, and code to 
 train writer-dependent classifiers [1]. It also contains code to train two countermeasures for Adversarial Examples,
-as described in [2]. 
+as described in [2] (the code to run the experiments from this second paper can be found in this [repository](https://github.com/luizgh/adversarial_signatures)).
 
 [1] Hafemann, Luiz G., Robert Sabourin, and Luiz S. Oliveira. "Learning Features for Offline Handwritten Signature Verification using Deep Convolutional Neural Networks" http://dx.doi.org/10.1016/j.patcog.2017.05.012 ([preprint](https://arxiv.org/abs/1705.05787))
 
