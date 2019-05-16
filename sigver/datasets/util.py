@@ -26,9 +26,9 @@ def load_dataset(path: str) -> Tuple[np.ndarray, np.ndarray, np.ndarray, Dict, n
     -------
 
     """
-    data = np.load(path)
-    x, y, yforg = data['x'], data['y'], data['yforg']
-    user_mapping, filenames = data['user_mapping'], data['filenames']
+    with np.load(path) as data:
+        x, y, yforg = data['x'], data['y'], data['yforg']
+        user_mapping, filenames = data['user_mapping'], data['filenames']
 
     return x, y, yforg, user_mapping, filenames
 
