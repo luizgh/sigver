@@ -281,17 +281,17 @@ def test(val_loader: torch.utils.data.DataLoader,
                 forg_pred = forg_logits > 0
                 forg_acc = yforg.long().eq(forg_pred.long()).float().mean()
 
-                val_forg_losses.append(forg_loss)
-                val_forg_accs.append(forg_acc)
+                val_forg_losses.append(forg_loss.item())
+                val_forg_accs.append(forg_acc.item())
 
         val_losses.append(loss.item())
         val_accs.append(acc.item())
     val_loss = np.mean(val_losses)
     val_acc = np.mean(val_accs)
-    val_forg_loss = np.mean(val_forg_losses).item() if len(val_forg_losses) > 0 else np.nan
-    val_forg_acc= np.mean(val_forg_accs).item() if len(val_forg_accs) > 0 else np.nan
+    val_forg_loss = np.mean(val_forg_losses) if len(val_forg_losses) > 0 else np.nan
+    val_forg_acc= np.mean(val_forg_accs) if len(val_forg_accs) > 0 else np.nan
 
-    return val_acc.item(), val_loss.item(), val_forg_acc, val_forg_loss
+    return val_acc.item(), val_loss.item(), val_forg_acc.item(), val_forg_loss.item()
 
 
 def main(args):
