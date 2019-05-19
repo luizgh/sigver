@@ -224,7 +224,8 @@ def train_epoch(train_loader: torch.utils.data.DataLoader,
             callback.scalar('class_loss', iteration, class_loss.detach())
 
             pred = logits.argmax(1)
-            acc = y[yforg == 0].eq(pred).float().mean()
+            if args.loss_type == 'L1': acc = y.eq(pred).float().mean()
+            else: acc = y[yforg == 0].eq(pred[yforg == 0]).float().mean()
             callback.scalar('train_acc', epoch + (step / n_steps), acc.detach())
             if args.forg:
                 forg_pred = forg_logits > 0
