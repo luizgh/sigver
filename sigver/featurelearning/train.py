@@ -185,15 +185,26 @@ def train_epoch(train_loader: torch.utils.data.DataLoader,
         features = base_model(x)
 
         if args.forg:
-            # Eq (4) in https://arxiv.org/abs/1705.05787
-            logits = classification_layer(features[yforg == 0])
-            class_loss = F.cross_entropy(logits, y[yforg == 0])
+            if args.loss_type == 'L1':
+                # Eq (3) in https://arxiv.org/abs/1705.05787
+                logits = classification_layer(features)
+                class_loss = F.cross_entropy(logits, y)
 
-            forg_logits = forg_layer(features).squeeze()
-            forg_loss = F.binary_cross_entropy_with_logits(forg_logits, yforg)
+                forg_logits = forg_layer(features).squeeze()
+                forg_loss = F.binary_cross_entropy_with_logits(forg_logits, yforg)
 
-            loss = (1 - args.lamb) * class_loss
-            loss += args.lamb * forg_loss
+                loss = (1 - args.lamb) * class_loss
+                loss += args.lamb * forg_loss
+            else: 
+                # Eq (4) in https://arxiv.org/abs/1705.05787
+                logits = classification_layer(features[yforg == 0])
+                class_loss = F.cross_entropy(logits, y[yforg == 0])
+
+                forg_logits = forg_layer(features).squeeze()
+                forg_loss = F.binary_cross_entropy_with_logits(forg_logits, yforg)
+
+                loss = (1 - args.lamb) * class_loss
+                loss += args.lamb * forg_loss
         else:
             # Eq (1) in https://arxiv.org/abs/1705.05787
             logits = classification_layer(features)
@@ -281,17 +292,17 @@ def test(val_loader: torch.utils.data.DataLoader,
                 forg_pred = forg_logits > 0
                 forg_acc = yforg.long().eq(forg_pred.long()).float().mean()
 
-                val_forg_losses.append(forg_loss)
-                val_forg_accs.append(forg_acc)
+                val_forg_losses.append(forg_loss.item())
+                val_forg_accs.append(forg_acc.item())
 
         val_losses.append(loss.item())
         val_accs.append(acc.item())
     val_loss = np.mean(val_losses)
     val_acc = np.mean(val_accs)
-    val_forg_loss = np.mean(val_forg_losses).item() if len(val_forg_losses) > 0 else np.nan
-    val_forg_acc= np.mean(val_forg_accs).item() if len(val_forg_accs) > 0 else np.nan
+    val_forg_loss = np.mean(val_forg_losses) if len(val_forg_losses) > 0 else np.nan
+    val_forg_acc= np.mean(val_forg_accs) if len(val_forg_accs) > 0 else np.nan
 
-    return val_acc.item(), val_loss.item(), val_forg_acc, val_forg_loss
+    return val_acc.item(), val_loss.item(), val_forg_acc.item(), val_forg_loss.item()
 
 
 def main(args):
@@ -403,6 +414,7 @@ if __name__ == '__main__':
     argparser.add_argument('--forg', dest='forg', action='store_true')
     argparser.add_argument('--lamb', type=float, help='Lambda for trading of user classification '
                                                       'and forgery classification')
+    argparser.add_argument('--loss-type', help='L1 or L2 loss, implemented on paper Eq(3) or Eq(4)', default='L2', type=str)
 
     argparser.add_argument('--gpu-idx', default=0, type=int)
     argparser.add_argument('--logdir', help='logdir', required=True)
