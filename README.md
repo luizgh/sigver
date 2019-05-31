@@ -103,16 +103,9 @@ the paper for more details). For knowing all command-line options, run ```python
 # Pre-trained models
 
 Pre-trained models can be found here: 
-* SigNet ([link](https://storage.googleapis.com/luizgh-datasets/pytorch_models/signet.pth))
-* SigNet-F lambda 0.95 ([link](https://storage.googleapis.com/luizgh-datasets/pytorch_models/signet_f_lambda_0.95.pth))
+* SigNet ([link](https://drive.google.com/open?id=1l8NFdxSvQSLb2QTv71E6bKcTgvShKPpx))
+* SigNet-F lambda 0.95 ([link](https://drive.google.com/open?id=1ifaUiPtP1muMjt8Tkrv7yJj7we8ttncW))
 
-Or simply download via command line:
-
-```bash
-cd models 
-wget https://storage.googleapis.com/luizgh-datasets/pytorch_models/signet.pth
-wget https://storage.googleapis.com/luizgh-datasets/pytorch_models/signet_f_lambda_0.95.pth
-```
 
 These models contains the weights for the feature extraction layers.
 
