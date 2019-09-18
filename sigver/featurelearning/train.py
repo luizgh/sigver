@@ -302,7 +302,7 @@ def test(val_loader: torch.utils.data.DataLoader,
     val_forg_loss = np.mean(val_forg_losses) if len(val_forg_losses) > 0 else np.nan
     val_forg_acc= np.mean(val_forg_accs) if len(val_forg_accs) > 0 else np.nan
 
-    return val_acc.item(), val_loss.item(), val_forg_acc.item(), val_forg_loss.item()
+    return val_acc, val_loss, val_forg_acc, val_forg_loss
 
 
 def main(args):
