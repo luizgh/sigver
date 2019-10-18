@@ -1,6 +1,6 @@
 import argparse
 import functools
-from typing import Tuple
+from typing import Tuple, Optional
 import numpy as np
 
 from sigver.datasets import available_datasets
@@ -13,7 +13,7 @@ from sigver.preprocessing.normalize import preprocess_signature
 def process_dataset(dataset: IterableDataset,
                     save_path: str,
                     img_size: Tuple[int, int],
-                    subset: slice = slice(None)):
+                    subset: Optional[slice] = None):
     """ Processes a dataset (normalizing the images) and saves the result as a
         numpy npz file (collection of np.ndarrays).
 
@@ -39,6 +39,8 @@ def process_dataset(dataset: IterableDataset,
                                       img_size=img_size,
                                       input_size=img_size) # Don't crop it now
 
+    if subset is None:
+        subset = slice(None) # Use all
     processed = process_dataset_images(dataset, preprocess_fn, img_size, subset)
     x, y, yforg, user_mapping, used_files = processed
 

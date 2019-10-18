@@ -8,9 +8,10 @@ class GPDSDataset(IterableDataset):
     """ Helper class to load the GPDS-960 Grayscale dataset
     """
 
-    def __init__(self, path):
+    def __init__(self, path, extension='png'):
         self.path = path
         self.users = [int(user) for user in sorted(os.listdir(self.path))]
+        self.extension = extension
 
     @property
     def genuine_per_user(self):
@@ -62,7 +63,8 @@ class GPDSDataset(IterableDataset):
             prefix = 'cf'
         else:
             prefix = 'c'
-        filename = '{}-{:03d}-{:02d}.png'.format(prefix, user, img_idx)
+        filename = '{}-{:03d}-{:02d}.{}'.format(prefix, user, img_idx,
+                                                self.extension)
         full_path = os.path.join(self.path, '{:03d}'.format(user), filename)
         return img_as_ubyte(imread(full_path, as_gray=True))
 
