@@ -8,7 +8,7 @@ as described in [2] (the code to run the experiments from this second paper can 
 
 [2] Hafemann, Luiz G., Robert Sabourin, and Luiz S. Oliveira. "Characterizing and evaluating adversarial examples for Offline Handwritten Signature Verification" https://doi.org/10.1109/TIFS.2019.2894031 ([preprint](https://arxiv.org/abs/1901.03398))
 
-[3] Hafemann, Luiz G., Robert Sabourin, and Luiz S. Oliveira. "Meta-learning for fast classifier adaptation to new users of Signature Verification systems" ([preprint](https://arxiv.org/abs/1910.08060))
+[3] Hafemann, Luiz G., Robert Sabourin, and Luiz S. Oliveira. "Meta-learning for fast classifier adaptation to new users of Signature Verification systems" https://doi.org/10.1109/TIFS.2019.2949425 ([preprint](https://arxiv.org/abs/1910.08060))
 
 This code for feature extraction and writer-dependent classifiers is a re-implementation in Pytorch (original code for [1] was written in theano+lasagne: [link](https://github.com/luizgh/sigver_wiwd)). 
 
@@ -153,9 +153,9 @@ If you use our code, please consider citing the following papers:
 
 [1] Hafemann, Luiz G., Robert Sabourin, and Luiz S. Oliveira. "Learning Features for Offline Handwritten Signature Verification using Deep Convolutional Neural Networks" http://dx.doi.org/10.1016/j.patcog.2017.05.012 ([preprint](https://arxiv.org/abs/1705.05787))
 
-[2] Hafemann, Luiz G., Robert Sabourin, and Luiz S. Oliveira. "Characterizing and evaluating adversarial examples for Offline Handwritten Signature Verification" ([preprint](https://arxiv.org/abs/1901.03398))
+[2] Hafemann, Luiz G., Robert Sabourin, and Luiz S. Oliveira. "Characterizing and evaluating adversarial examples for Offline Handwritten Signature Verification" https://doi.org/10.1109/TIFS.2019.2894031 ([preprint](https://arxiv.org/abs/1901.03398))
 
-[3] Hafemann, Luiz G., Robert Sabourin, and Luiz S. Oliveira. "Meta-learning for fast classifier adaptation to new users of Signature Verification systems" ([preprint](https://arxiv.org/abs/1910.08060))
+[3] Hafemann, Luiz G., Robert Sabourin, and Luiz S. Oliveira. "Meta-learning for fast classifier adaptation to new users of Signature Verification systems" https://doi.org/10.1109/TIFS.2019.2949425 ([preprint](https://arxiv.org/abs/1910.08060))
 
 # License
 
