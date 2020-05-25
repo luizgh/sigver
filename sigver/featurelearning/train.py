@@ -197,8 +197,11 @@ def train_epoch(train_loader: torch.utils.data.DataLoader,
                 loss += args.lamb * forg_loss
             else: 
                 # Eq (4) in https://arxiv.org/abs/1705.05787
-                logits = classification_layer(features[yforg == 0])
-                class_loss = F.cross_entropy(logits, y[yforg == 0])
+                if torch.any(yforg == 0):
+                    logits = classification_layer(features[yforg == 0])
+                    class_loss = F.cross_entropy(logits, y[yforg == 0])
+                else:
+                    class_loss = 0
 
                 forg_logits = forg_layer(features).squeeze()
                 forg_loss = F.binary_cross_entropy_with_logits(forg_logits, yforg)
