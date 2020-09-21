@@ -4,7 +4,7 @@ from functools import partial
 
 from sigver.datasets import gpds
 from sigver.datasets.util import process_dataset
-from sigver.datasets.toremove import center_crop, center_crop_multiple, random_crop, random_crop_multiple
+from sigver.preprocessing.crop import center_crop, center_crop_multiple, random_crop, random_crop_multiple
 import math
 import warnings
 

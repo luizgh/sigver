@@ -71,6 +71,7 @@ def process_dataset(dataset: IterableDataset,
              yforg=yforg,
              user_mapping=user_mapping,
              filenames=used_files)
+    return x, y, yforg, user_mapping, used_files
 
 
 def process_dataset_images(dataset: IterableDataset,
